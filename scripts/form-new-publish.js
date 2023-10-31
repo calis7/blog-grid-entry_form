@@ -84,14 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
     profileName.classList.add("profile-name");
     profileName.textContent = nombre; // Actualiza el nombre del autor
 
+    const authorName = document.getElementById("entry-author").value;
+        profileName.textContent = authorName || "Anonymous";
+
+    profile.appendChild(profileImg);
+    profile.appendChild(profileName);
 
     postBox.appendChild(img);
     postBox.appendChild(postCategory);
     postBox.appendChild(postTitle);
     postBox.appendChild(postDate);
     postBox.appendChild(postDescription);
-    profile.appendChild(profileImg);
-    profile.appendChild(profileName);
+    postBox.appendChild(profile);
+    
 
         postContainer.insertBefore(postBox,postContainer.firstChild);
         /* postContainer.appendChild(postBox); */
