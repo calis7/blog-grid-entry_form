@@ -9,93 +9,89 @@ document.addEventListener("DOMContentLoaded", function () {
         const text = document.getElementById("entry-text").value;
         const image = document.getElementById("entry-image").files[0];
         const profileImage = document.getElementById("entry-profile-image").files[0];
+        const nombre = document.getElementById("entry-author").value;
 
-        addNewPost(category, title, text, image, profileImage);
+        addNewPost(category, title, text, image, profileImage, nombre);
         // Desplazarse a la grilla de publicaciones
         scrollPostsToView();
         blogEntryForm.reset();
     });
 
     // Function to add a new post to the existing posts
-    function addNewPost(category, title, text, image, profileImage) {
-        const postContainer = document.querySelector(".post.container");
+   function addNewPost(category, title, text, image, profileImage, nombre) {
+    const postContainer = document.querySelector(".post.container");
 
-        const postBox = document.createElement("div");
-        postBox.classList.add("post-box", category);
-        
+    const postBox = document.createElement("div");
+    postBox.classList.add("post-box", category);
 
-        const img = document.createElement("img");
-        if (image) {
-            // Use a FileReader to display the selected image
-            const reader = new FileReader();
-            reader.onload = function () {
-                img.src = reader.result;
-                img.style.borderRadius = "10px"; // Add rounded corners to the image
-            };
-            reader.readAsDataURL(image);
-        } else {
-            img.src = "images/default.jpg"; // Replace with actual image URL
-        }
-        img.alt = title;
-        img.classList.add("post-img");
+    const img = document.createElement("img");
+    if (image) {
+        // Use a FileReader to display the selected image
+        const reader = new FileReader();
+        reader.onload = function () {
+            img.src = reader.result;
+            img.style.borderRadius = "10px"; // Add rounded corners to the image
+        };
+        reader.readAsDataURL(image);
+    } else {
+        img.src = "images/default.jpg"; // Replace with actual image URL
+    }
+    img.alt = title;
+    img.classList.add("post-img");
 
-        const postCategory = document.createElement("h2");
-        postCategory.classList.add("category");
-        postCategory.textContent = category;
+    const postCategory = document.createElement("h2");
+    postCategory.classList.add("category");
+    postCategory.textContent = category;
 
-        const postTitle = document.createElement("a");
-        postTitle.classList.add("post-title");
-        postTitle.textContent = title;
-        postTitle.style.cursor= "pointer";
+    const postTitle = document.createElement("a");
+    postTitle.classList.add("post-title");
+    postTitle.textContent = title;
+    postTitle.style.cursor = "pointer";
 
-        // Agregar evento de clic para abrir en una nueva pestaña
-        postTitle.addEventListener("click", function () {
-            createPostDetailPage(category, title, text, image, profileImage);
-        });
+    // Agregar evento de clic para abrir en una nueva pestaña
+    postTitle.addEventListener("click", function () {
+        createPostDetailPage(category, title, text, image, profileImage, nombre);
+    });
 
-        const postDate = document.createElement("span");
-        postDate.classList.add("post-date");
-        const today = new Date();
-        postDate.textContent = today.toLocaleDateString();
+    const postDate = document.createElement("span");
+    postDate.classList.add("post-date");
+    const today = new Date();
+    postDate.textContent = today.toLocaleDateString();
 
-        const postDescription = document.createElement("p");
-        postDescription.classList.add("post-description");
-        postDescription.textContent = text;
+    const postDescription = document.createElement("p");
+    postDescription.classList.add("post-description");
+    postDescription.textContent = text;
 
-        const profile = document.createElement("div");
-        profile.classList.add("profile");
+    const profile = document.createElement("div");
+    profile.classList.add("profile");
 
-        const profileImg = document.createElement("img");
-        if (profileImage) {
-            // Use a FileReader to display the selected profile image
-            const reader = new FileReader();
-            reader.onload = function () {
-                profileImg.src = reader.result;
-                profileImg.style.borderRadius = "100%"; // Add rounded corners to the profile image
-            };
-            reader.readAsDataURL(profileImage);
-        } else {
-            profileImg.src = "images/default-profile.jpg"; // Replace with actual profile image URL
-        }
-        profileImg.alt = "Profile Image";
-        profileImg.classList.add("profile-img");
+    const profileImg = document.createElement("img");
+    if (profileImage) {
+        // Use a FileReader to display the selected profile image
+        const reader = new FileReader();
+        reader.onload = function () {
+            profileImg.src = reader.result;
+            profileImg.style.borderRadius = "100%"; // Add rounded corners to the profile image
+        };
+        reader.readAsDataURL(profileImage);
+    } else {
+        profileImg.src = "images/default-profile.jpg"; // Replace with actual profile image URL
+    }
+    profileImg.alt = "Profile Image";
+    profileImg.classList.add("profile-img");
+
+    const profileName = document.createElement("span");
+    profileName.classList.add("profile-name");
+    profileName.textContent = nombre; // Actualiza el nombre del autor
 
 
-        const profileName = document.createElement("span");
-        profileName.classList.add("profile-name");
-
-        const authorName = document.getElementById("entry-author").value;
-        profileName.textContent = authorName || "Anonymous";
-
-        profile.appendChild(profileImg);
-        profile.appendChild(profileName);
-
-        postBox.appendChild(img);
-        postBox.appendChild(postCategory);
-        postBox.appendChild(postTitle);
-        postBox.appendChild(postDate);
-        postBox.appendChild(postDescription);
-        postBox.appendChild(profile);
+    postBox.appendChild(img);
+    postBox.appendChild(postCategory);
+    postBox.appendChild(postTitle);
+    postBox.appendChild(postDate);
+    postBox.appendChild(postDescription);
+    profile.appendChild(profileImg);
+    profile.appendChild(profileName);
 
         postContainer.insertBefore(postBox,postContainer.firstChild);
         /* postContainer.appendChild(postBox); */
@@ -108,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para crear dinámicamente una página de detalle de publicación
-    function createPostDetailPage(category, title, text, image, profileImage) {
+    function createPostDetailPage(category, title, text, image, profileImage, nombre) {
         // Crear un nuevo documento HTML para la página de detalle
         const postDetailDocument = document.implementation.createHTMLDocument("Post Detail");
 
@@ -529,7 +525,7 @@ footer p{
                         <p class="post-description">${text}</p>
                         <div class="profile">
                             <img src="${profileImage ? URL.createObjectURL(profileImage) : 'images/default-profile.jpg'}" alt="Author Image" class="profile-img">
-                            <span class="profile-name">Author Name</span>
+                            <span class="profile-name">${nombre}</span>
                         </div>
                     </div>
                 </article>
