@@ -138,6 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
     box-sizing: border-box;
 }
 
+
+
 /* root values */
 :root{
     --container-color: #1a1e21;
@@ -146,6 +148,55 @@ document.addEventListener("DOMContentLoaded", function () {
     --bg-color: #fff;
 }
 
+
+.container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+
+
+
+header.shadow{
+    background: var(--bg-color);
+    box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
+    transition: .5s;
+}
+
+header.shadow .logo{
+    color: var(--text-color);
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+}
+
+.logo{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bg-color);
+}
+
+.logo span{
+    color: var(--second-color);
+}
+
+.login{
+    padding: 8px 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 4px;
+    background: var(--second-color);
+    color: var(--bg-color);
+}
+
+.login:hover{
+    background: hsl(199, 98%, 56%);
+    transition: .5s;
+}
 body {
     display: grid;
     grid-template-columns: 1fr; /* Columna única */
@@ -414,61 +465,8 @@ footer p{
     }
 }
 
-.container{
-    max-width: 1068px;
-    margin: auto;
-    width: 100%;
-}
 
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 200;
-}
-
-header.shadow{
-    background: var(--bg-color);
-    box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
-    transition: .5s;
-}
-
-header.shadow .logo{
-    color: var(--text-color);
-}
-
-.nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0;
-}
-
-.logo{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--bg-color);
-}
-
-.logo span{
-    color: var(--second-color);
-}
-
-.login{
-    padding: 8px 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 4px;
-    background: var(--second-color);
-    color: var(--bg-color);
-}
-
-.login:hover{
-    background: hsl(199, 98%, 56%);
-    transition: .5s;
-}
 
 </style>
                 
