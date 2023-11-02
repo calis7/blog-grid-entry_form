@@ -18,87 +18,87 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Function to add a new post to the existing posts
-   function addNewPost(category, title, text, image, profileImage, nombre) {
-    const postContainer = document.querySelector(".post.container");
+    function addNewPost(category, title, text, image, profileImage, nombre) {
+        const postContainer = document.querySelector(".post.container");
 
-    const postBox = document.createElement("div");
-    postBox.classList.add("post-box", category);
+        const postBox = document.createElement("div");
+        postBox.classList.add("post-box", category);
 
-    const img = document.createElement("img");
-    if (image) {
-        // Use a FileReader to display the selected image
-        const reader = new FileReader();
-        reader.onload = function () {
-            img.src = reader.result;
-            img.style.borderRadius = "10px"; // Add rounded corners to the image
-        };
-        reader.readAsDataURL(image);
-    } else {
-        img.src = "images/default.jpg"; // Replace with actual image URL
-    }
-    img.alt = title;
-    img.classList.add("post-img");
+        const img = document.createElement("img");
+        if (image) {
+            // Use a FileReader to display the selected image
+            const reader = new FileReader();
+            reader.onload = function () {
+                img.src = reader.result;
+                img.style.borderRadius = "10px"; // Add rounded corners to the image
+            };
+            reader.readAsDataURL(image);
+        } else {
+            img.src = "images/default.jpg"; // Replace with actual image URL
+        }
+        img.alt = title;
+        img.classList.add("post-img");
 
-    const postCategory = document.createElement("h2");
-    postCategory.classList.add("category");
-    postCategory.textContent = category;
+        const postCategory = document.createElement("h2");
+        postCategory.classList.add("category");
+        postCategory.textContent = category;
 
-    const postTitle = document.createElement("a");
-    postTitle.classList.add("post-title");
-    postTitle.textContent = title;
-    postTitle.style.cursor = "pointer";
+        const postTitle = document.createElement("a");
+        postTitle.classList.add("post-title");
+        postTitle.textContent = title;
+        postTitle.style.cursor = "pointer";
 
-    // Agregar evento de clic para abrir en una nueva pestaña
-    postTitle.addEventListener("click", function () {
-        createPostDetailPage(category, title, text, image, profileImage, nombre);
-    });
+        // Agregar evento de clic para abrir en una nueva pestaña
+        postTitle.addEventListener("click", function () {
+            createPostDetailPage(category, title, text, image, profileImage, nombre);
+        });
 
-    const postDate = document.createElement("span");
-    postDate.classList.add("post-date");
-    const today = new Date();
-    postDate.textContent = today.toLocaleDateString();
+        const postDate = document.createElement("span");
+        postDate.classList.add("post-date");
+        const today = new Date();
+        postDate.textContent = today.toLocaleDateString();
 
-    const postDescription = document.createElement("p");
-    postDescription.classList.add("post-description");
-    postDescription.textContent = text;
+        const postDescription = document.createElement("p");
+        postDescription.classList.add("post-description");
+        postDescription.textContent = text;
 
-    const profile = document.createElement("div");
-    profile.classList.add("profile");
+        const profile = document.createElement("div");
+        profile.classList.add("profile");
 
-    const profileImg = document.createElement("img");
-    if (profileImage) {
-        // Use a FileReader to display the selected profile image
-        const reader = new FileReader();
-        reader.onload = function () {
-            profileImg.src = reader.result;
-            profileImg.style.borderRadius = "100%"; // Add rounded corners to the profile image
-        };
-        reader.readAsDataURL(profileImage);
-    } else {
-        profileImg.src = "images/default-profile.jpg"; // Replace with actual profile image URL
-    }
-    profileImg.alt = "Profile Image";
-    profileImg.classList.add("profile-img");
+        const profileImg = document.createElement("img");
+        if (profileImage) {
+            // Use a FileReader to display the selected profile image
+            const reader = new FileReader();
+            reader.onload = function () {
+                profileImg.src = reader.result;
+                profileImg.style.borderRadius = "100%"; // Add rounded corners to the profile image
+            };
+            reader.readAsDataURL(profileImage);
+        } else {
+            profileImg.src = "images/default-profile.jpg"; // Replace with actual profile image URL
+        }
+        profileImg.alt = "Profile Image";
+        profileImg.classList.add("profile-img");
 
-    const profileName = document.createElement("span");
-    profileName.classList.add("profile-name");
-    profileName.textContent = nombre; // Actualiza el nombre del autor
+        const profileName = document.createElement("span");
+        profileName.classList.add("profile-name");
+        profileName.textContent = nombre; // Actualiza el nombre del autor
 
-    const authorName = document.getElementById("entry-author").value;
+        const authorName = document.getElementById("entry-author").value;
         profileName.textContent = authorName || "Anonymous";
 
-    profile.appendChild(profileImg);
-    profile.appendChild(profileName);
+        profile.appendChild(profileImg);
+        profile.appendChild(profileName);
 
-    postBox.appendChild(img);
-    postBox.appendChild(postCategory);
-    postBox.appendChild(postTitle);
-    postBox.appendChild(postDate);
-    postBox.appendChild(postDescription);
-    postBox.appendChild(profile);
-    
+        postBox.appendChild(img);
+        postBox.appendChild(postCategory);
+        postBox.appendChild(postTitle);
+        postBox.appendChild(postDate);
+        postBox.appendChild(postDescription);
+        postBox.appendChild(profile);
 
-        postContainer.insertBefore(postBox,postContainer.firstChild);
+
+        postContainer.insertBefore(postBox, postContainer.firstChild);
         /* postContainer.appendChild(postBox); */
     }
 
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 .article-detail .article-image img {
-    max-width: 40vw; /* Limita el ancho máximo de la imagen al ancho del contenedor */
+    max-width: 35vw; /* Limita el ancho máximo de la imagen al ancho del contenedor */
     height: auto;
     display: block; /* Centra la imagen horizontalmente */
     margin: 0 auto; /* Centra la imagen horizontalmente */
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 .article-content {
-    max-width: 800px;
+    width: 130vh;
     margin: 0 auto;
 }
 
@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
     text-align: justify; /* Justificar el texto */
 }
 
+
 .article-content .profile {
     display: flex;
     align-items: center;
@@ -220,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
     font-size: 0.8rem;
     font-weight: 500;
 }
+
 
 footer{
     position: relative;
@@ -326,158 +328,7 @@ footer p{
     margin-right: 0 !important;
 }
 
-.contactBx .info{
-    position: relative;
-}
 
-.contactBx .info li{
-    display: flex !important;
-    margin-bottom: 16px;
-}
-
-.contactBx .info li span:nth-child(1){
-    color: #fff;
-    font-size: 20px;
-    margin-right: 10px;
-}
-
-.contactBx .info li span{
-    color: #999;
-}
-
-.contactBx .info li a{
-    color: #999;
-    text-decoration: none;
-    transition: .5s;
-}
-
-.contactBx .info li a:hover{
-    color: #fff;
-}
-
-@media (max-width: 1060px){
-    .container{
-        margin: 0 auto;
-        width: 95%;
-    }
-
-    .home-text{
-        width: 100%
-    }
-}
-
-@media (max-width: 768px){
-    .nav{
-        padding: 10px 0;
-    }
-
-    section{
-        padding: 2rem 0 !important;
-    }
-
-    .header-content{
-        margin-top: 3rem !important;
-    }
-
-    .home{
-        min-height: 380px;
-    }
-
-    .home-title{
-        font-size: 3rem;
-    }
-
-    .header-title{
-        font-size: 2rem;
-    }
-
-    .header-img{
-        height: 370px;
-    }
-
-    .about{
-        flex-direction: column;
-    }
-
-    .about .contentBx{
-        min-width: 100%;
-        width: 100%;
-        text-align: center;
-        padding-right: 0px;
-    }
-
-    .about .contentBx,
-    .about .imgBx{
-        min-width: 100%;
-        width: 100%;
-        padding-right: 0px;
-        text-align: center;
-    }
-
-    .about .imgBx{
-        min-height: 250px;
-    }
-
-    .btn2{
-        margin-bottom: 30px;
-    }
-
-    .post-header{
-        height: 435px;
-    }
-
-    .post-header{
-        margin-top: 9rem !important;
-    }
-}
-
-@media (max-width: 570px){
-    .post-header{
-        height: 390px;
-    }
-
-    .header-title{
-        width: 100%;
-    }
-
-    .header-img{
-        height: 340px;
-    }
-}
-
-@media (max-width: 396px){
-    .home-title{
-        font-size: 2rem;
-    }
-
-    .home-subtitle{
-        font-size: 0.9rem;
-    }
-
-    .home{
-        min-height: 300px;
-    }
-
-    .post-box{
-        padding: 10px;
-    }
-
-    .header-title{
-        font-size: 1.4rem;
-    }
-
-    .header-img{
-        height: 240px;
-    }
-
-    .post-header{
-        height: 335px;
-    }
-
-    .header-img{
-        height: 340px;
-    }
-}
 
 /* Footer Media Query */
 @media (max-width: 991px){
@@ -508,31 +359,87 @@ footer p{
     }
 }
 
+.container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+}
+
+header.shadow{
+    background: var(--bg-color);
+    box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
+    transition: .5s;
+}
+
+header.shadow .logo{
+    color: var(--text-color);
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+}
+
+.logo{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.logo span{
+    color: var(--second-color);
+}
+
+.login{
+    padding: 8px 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 4px;
+    background: var(--second-color);
+    color: var(--bg-color);
+}
+
+.login:hover{
+    background: hsl(199, 98%, 56%);
+    transition: .5s;
+}
 
 </style>
                 
              
        
             <body>
-                <header>
-                    <div class="nav">
-                        <a class="logo">Tu Blog</a>
-                    </div>
-                </header>
+            <header>
+            <div class="nav container">
+                <a href="#" class="logo">Code <span>myhobby</span></a>
+                <a href="#" class="login">Sign Up</a>
+            </div>
+            </header>
                 <article class="article-detail container">
-                    <div class="article-image">
+                    <figure class="article-image">
                         <img src="${image ? URL.createObjectURL(image) : 'images/default.jpg'}" alt="Article Image">
-                    </div>
-                    <div class="article-content">
+                    </figure>
+                    <main class="article-content">
                         <h2 class="category">${category}</h2>
                         <h1 class="post-title">${title}</h1>
                         <span class="post-date">${new Date().toLocaleDateString()}</span>
                         <p class="post-description">${text}</p>
-                        <div class="profile">
+                        <figure class="profile">
                             <img src="${profileImage ? URL.createObjectURL(profileImage) : 'images/default-profile.jpg'}" alt="Author Image" class="profile-img">
                             <span class="profile-name">${nombre}</span>
-                        </div>
-                    </div>
+                        </figure>
+                    </main>
                 </article>
                 
     <footer>
