@@ -145,7 +145,62 @@ document.addEventListener("DOMContentLoaded", function () {
     --bg-color: #fff;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 1fr; /* Columna única */
+    grid-template-rows: 7rem 1fr auto; /* Filas para header, contenido y footer */
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% del viewport */
+  }
+  
+  /* Estilos para header */
+  header {
+    grid-area: header;
+    background-color: #333; /* Establece el color de fondo que desees */
+    color: white; /* Establece el color de texto que desees */
+    padding: 10px;
+    z-index: 1; /* Asegura que el header esté en la parte superior */
+  }
+  
+  /* Estilos para main (contenido principal) */
+  article.article-detail {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr; /* Columna única para mantener el contenido uno debajo del otro */
+    background-color: #f1f1f1; /* Establece el color de fondo que desees */
+    padding: 20px;
+    border-radius: 10px;
+   
+  }
+  
+  /* Estilos para el artículo en sí */
+  .article-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilos para la imagen del artículo */
+  .article-image {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  }
+  
+  /* Estilos para el contenido del artículo */
+  .article-content {
+    margin-top: 20px; /* Agrega un espacio entre la imagen y el contenido */
+  }
+  
+  /* Estilos para footer */
+  footer {
+    grid-area: footer;
+    background-color: #333; /* Establece el color de fondo que desees */
+    color: white; /* Establece el color de texto que desees */
+    padding: 20px;
+  }
 
+  
 .article-detail {
     padding: 3rem 0;
     text-align: center;
@@ -160,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 .article-content {
-    width: 130vh;
+    width: auto;
     margin: 0 auto;
 }
 
@@ -221,7 +276,6 @@ document.addEventListener("DOMContentLoaded", function () {
     font-size: 0.8rem;
     font-weight: 500;
 }
-
 
 footer{
     position: relative;
@@ -394,7 +448,7 @@ header.shadow .logo{
 .logo{
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--bg-color);
 }
 
 .logo span{
