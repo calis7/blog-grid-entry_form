@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <title>${title} - Detalle de Publicación</title>
                 </head>
                         
+                
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap');
