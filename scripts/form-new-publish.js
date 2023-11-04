@@ -477,7 +477,7 @@ header.shadow .logo{
             <body>
             <header>
             <div class="nav container">
-                <a href="#" class="logo">Code <span>myhobby</span></a>
+                <a href="#" class="logo">Calis <span>Developer</span></a>
                 <a href="#" class="login">Sign Up</a>
             </div>
             </header>
