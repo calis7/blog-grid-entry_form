@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <link rel="stylesheet" href="/styles/post-detail.css">
                 <link rel="stylesheet" href="/styles/style.css">      
                 <title>${title} - Detalle de Publicación</title>
-                </head>
+            </head>
                         
                 
 
