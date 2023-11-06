@@ -480,7 +480,7 @@ footer p{
     }
 }
 
-@media (max-width: 570px){
+@media (max-width: 576px){
     .post-header{
         height: 390px;
     }
@@ -559,10 +559,16 @@ footer p{
 
 /* ESTILOS DEL FORMULARIO DE REGISTRO DE NUEVA ENTRADA */
 
+
+
 .create-entry {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 3rem 0;
     text-align: center;
 }
+
 
 .create-entry h2 {
     font-size: 2rem;
@@ -575,7 +581,11 @@ footer p{
 }
 
 .form-group {
+
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    align-items: center;
+    
 }
 
 label {
@@ -588,6 +598,7 @@ textarea {
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
+    margin: auto;
 }
 
 input[type="file"] {
@@ -607,6 +618,10 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background: hsl(199, 98%, 56%);
+}
+
+.container{
+    margin: auto;
 }
 
 
